@@ -1,4 +1,4 @@
-package one.digital.innovation.one.personapi.mapper;
+package one.digital.innovation.one.personapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

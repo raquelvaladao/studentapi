@@ -42,6 +42,11 @@ public class StudentController {
        return studentService.findById(id);
     }
 
+    @PutMapping("/{id}")
+    public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid StudentDTO studentDTO) throws StudentNotFoundException{
+        return studentService.updateById(id, studentDTO);
+    }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) throws StudentNotFoundException {

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>one.digital.innovation.one</groupId>
-	<artifactId>personapi</artifactId>
+	<artifactId>studentapi</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>personapi</name>
+	<name>studentapi</name>
 	<description>API project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -51,6 +51,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>1.3.1.Final</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -58,6 +65,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.parent.version}</version>
 				<configuration>
 					<excludes>
 						<exclude>

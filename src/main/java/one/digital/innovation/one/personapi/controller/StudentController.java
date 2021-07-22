@@ -1,6 +1,7 @@
 package one.digital.innovation.one.personapi.controller;
 
 
+import lombok.AllArgsConstructor;
 import one.digital.innovation.one.personapi.dto.request.StudentDTO;
 import one.digital.innovation.one.personapi.dto.response.MessageResponseDTO;
 import one.digital.innovation.one.personapi.entity.Student;
@@ -17,14 +18,9 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/students")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class StudentController {
-
     private StudentService studentService;
-
-    @Autowired
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

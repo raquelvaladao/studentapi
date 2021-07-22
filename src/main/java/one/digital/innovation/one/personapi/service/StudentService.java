@@ -7,10 +7,9 @@ import one.digital.innovation.one.personapi.mapper.StudentMapper;
 import one.digital.innovation.one.personapi.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -31,10 +30,7 @@ public class StudentService {
     public MessageResponseDTO createStudent(StudentDTO studentDTO){
       Student studentToSave = studentMapper.toModel(studentDTO);
         Student savedStudent = studentRepository.save(studentToSave);
-        return MessageResponseDTO
-                .builder()
-                .message("Saved student with ID:" + savedStudent.getId())
-                .build();
+        return createMessageResponse(savedStudent);
     }
 
     @GetMapping
@@ -52,9 +48,23 @@ public class StudentService {
        return studentMapper.toDTO(student);
     }
 
+    public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid StudentDTO studentDTO) throws StudentNotFoundException {
+            checkIfExists(id);
+            Student studentToUptade = studentMapper.toModel(studentDTO);
+            Student updatedStudent = studentRepository.save(studentToUptade);
+            return createMessageResponse(updatedStudent);
+    }
+
     public void delete(Long id) throws StudentNotFoundException {
         checkIfExists(id);
         studentRepository.deleteById(id);
+    }
+
+    private MessageResponseDTO createMessageResponse(Student message) {
+        return MessageResponseDTO
+                .builder()
+                .message("Saved student with ID:" + message.getId())
+                .build();
     }
 
     private Student checkIfExists(@PathVariable Long id) throws StudentNotFoundException {

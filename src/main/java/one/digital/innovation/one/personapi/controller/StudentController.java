@@ -15,10 +15,10 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/students")
 public class StudentController {
-    @Autowired
+
     private StudentService studentService;
 
-
+    @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }

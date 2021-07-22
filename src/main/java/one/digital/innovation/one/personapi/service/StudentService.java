@@ -7,7 +7,11 @@ import one.digital.innovation.one.personapi.mapper.StudentMapper;
 import one.digital.innovation.one.personapi.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentService {
@@ -29,5 +33,14 @@ public class StudentService {
                 .builder()
                 .message("Saved student with ID:" + savedStudent.getId())
                 .build();
+    }
+
+    @GetMapping
+    public List<StudentDTO> listAll(){
+        List<Student> allStudents = studentRepository.findAll();
+        return allStudents
+                .stream()
+                .map(studentMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }

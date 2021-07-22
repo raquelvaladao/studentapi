@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -29,4 +30,8 @@ public class StudentController {
             return studentService.createStudent(studentDTO);
     }
 
+    @GetMapping
+    public List<StudentDTO> listAll(){
+        return studentService.listAll();
+    }
 }

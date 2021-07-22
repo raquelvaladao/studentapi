@@ -10,7 +10,6 @@ import org.mapstruct.factory.Mappers;
 public interface StudentMapper {
     StudentMapper INSTANCE = Mappers.getMapper(StudentMapper.class);
 
-    @Mapping(target = "birthDate", source = "birthDate", dateFormat = "dd-MM-yyyy")
     Student toModel(StudentDTO studentDTO);
 
     StudentDTO toDTO(Student student);

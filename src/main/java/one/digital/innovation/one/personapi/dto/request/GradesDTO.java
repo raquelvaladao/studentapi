@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import one.digital.innovation.one.personapi.enums.GradesType;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Data
 @Builder
@@ -19,10 +21,15 @@ public class GradesDTO {
     @Enumerated(EnumType.STRING)
     private GradesType gradesType;
 
+    @NotEmpty
+    @Size(min = 5, max = 10)
     private String grades;
 
+    @NotEmpty
+    @Size(min = 2, max = 100)
     private String gradesSource;
 
+    @Size(min = 2, max = 100)
     private String reminders;
 
 }

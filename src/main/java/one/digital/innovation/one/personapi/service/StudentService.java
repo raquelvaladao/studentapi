@@ -14,7 +14,7 @@ public class StudentService {
 
     private StudentRepository studentRepository;
 
-    private final StudentMapper studentMapper = StudentMapper.INSTANCE;
+    private StudentMapper studentMapper = StudentMapper.INSTANCE;
 
     @Autowired
     public StudentService(StudentRepository studentRepository) {

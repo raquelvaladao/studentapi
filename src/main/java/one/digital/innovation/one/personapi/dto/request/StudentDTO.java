@@ -19,6 +19,7 @@ import java.util.List;
 public class StudentDTO {
 
     private Long id;
+
     @NotEmpty
     @Size(min = 5, max = 100)
     private String firstName;
@@ -33,5 +34,5 @@ public class StudentDTO {
 
     @Valid
     @NotEmpty
-    private List<Grades> grades;
+    private List<GradesDTO> grades;
 }

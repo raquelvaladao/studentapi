@@ -1,4 +1,4 @@
-package one.digital.innovation.one.personapi.dto;
+package one.digital.innovation.one.personapi.dto.response;
 
 import lombok.Builder;
 import lombok.Data;

@@ -48,9 +48,18 @@ public class StudentService {
 
     @GetMapping("/{id}")
     public StudentDTO findById(@PathVariable Long id) throws StudentNotFoundException {
-       Student student = studentRepository
-               .findById(id)
-               .orElseThrow(() -> new StudentNotFoundException(id));
+       Student student = checkIfExists(id);
        return studentMapper.toDTO(student);
+    }
+
+    public void delete(Long id) throws StudentNotFoundException {
+        checkIfExists(id);
+        studentRepository.deleteById(id);
+    }
+
+    private Student checkIfExists(@PathVariable Long id) throws StudentNotFoundException {
+        return studentRepository
+                .findById(id)
+                .orElseThrow(() -> new StudentNotFoundException(id));
     }
 }
